@@ -9,8 +9,8 @@ GREY  = "lightgrey"
 RED   = "red"
 
 # TK config
-X_CELLS    = 350
-Y_CELLS    = 200
+X_CELLS    = 200
+Y_CELLS    = 150
 CELL_SIZE  = 4
 SLEEP_TIME = 10  # time in ms between 2 moves
 SEED_INIT  = 7
@@ -27,7 +27,7 @@ class App(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
         self.cells = dict()
-        self.stopped = True    # flag to prevent to click multiple callbacks by Run click
+        self.stopped = True  # flag to prevent to trigger multiple callbacks by Run click
         self.steps = 0
         self.alive = set()
 
@@ -195,6 +195,9 @@ class App(tk.Tk):
 
             self.alive = set()
             self.initial_setup()
+
+            self.steps = 0
+            self.steps_label2.config(text=str(self.steps))
 
             # reset flags
             self.stopped = True
